@@ -1,10 +1,11 @@
 import pygame
+from calculator import *
 
 class Display():
     
-    
     def __init__(self,screen):
         self.screen = screen
+        self.calulator = Calculator()
         self.Font = pygame.font.SysFont('malgungothic', 50)
         self.Font2 = pygame.font.SysFont('malgungothic', 100)
         self.printnumder =''
@@ -12,9 +13,9 @@ class Display():
         self.listset = 1
         
     def clickchick(self):
-        self.buttonFontlist = [self.button0,self.button1,self.button2,self.button3,self.button4,self.button5,self.button6,self.button7,self.button8,self.button9,self.button10,self.button11,self.button12,self.button13,self.button14]
+        self.buttonFontlist = [self.button0,self.button1,self.button2,self.button3,self.button4,self.button5,self.button6,self.button7,self.button8,self.button9,self.button10,self.button11,self.button12,self.button13,self.button14,self.button15]
         pos = pygame.mouse.get_pos()
-        for i in range(15):
+        for i in range(16):
             if self.buttonFontlist[i].collidepoint(pos) and pygame.mouse.get_pressed()[0]:
                 if self.lock == 0:
                     self.lock = 1
@@ -48,7 +49,9 @@ class Display():
                             self.printnumder = ''
                             self.numderlist = []
                             self.listset = 1
-                        
+                        elif i == 15:
+                            print('계산결과')
+                            print(self.calulator.math(self.numderlist))
         if pygame.mouse.get_pressed()[0] == False:
             self.lock = 0
 
@@ -70,6 +73,7 @@ class Display():
         self.button12 = self.screen.blit(self.Font.render('*',True,(255,255,255)),(125,575))
         self.button13 = self.screen.blit(self.Font.render('/',True,(255,255,255)),(225,575))
         self.button14 = self.screen.blit(self.Font.render('초기화',True,(255,255,255)),(900,500))
+        self.button15 = self.screen.blit(self.Font.render('=',True,(255,255,255)),(900,400))
         self.screen.blit(self.Font.render(self.printnumder,True,(255,255,255)),(300,120))
         self.clickchick()
         

@@ -1,5 +1,5 @@
 import pygame
-from calculator import *
+
 from display import *
 
 class Start():
@@ -12,9 +12,8 @@ class Start():
         self.clock = pygame.time.Clock()
         self.screen = pygame.display.set_mode(self.screen)
         self.display = Display(self.screen)
-        self.calulator = Calculator(self.display)
-    
         
+    
     def eventProcess(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
@@ -25,7 +24,6 @@ class Start():
             self.screen.fill((0, 255, 255))
             self.eventProcess()
             self.display.draw()
-            self.calulator.run()
             pygame.display.update()
             self.clock.tick(100)
 

@@ -1,13 +1,5 @@
+numderlist = ['2','*','3','*','5','/','2']
 
-
-
-
-
-list = ['1','-','1','*','2']
-
-
-for i in range(len(list)):
-    print(i)
 
 
 
